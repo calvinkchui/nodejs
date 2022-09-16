@@ -14,7 +14,6 @@
 //const es6 = require('./core/es6');
 //es6.test();
 
-
 // Problem - 1
 //import importFx from "./core/importExport.mjs";
 //importFx.test();
@@ -63,10 +62,14 @@ console.log("done");
 //winston.test();
 
 // .env
-const penv = require('./pkg/env');
-penv.test();
+//const penv = require('./pkg/env');
+//penv.test();
 
 
+// Sanity
+// @sanity/client
+const sanityClient = require('./pkg/sanityClient');
+sanityClient.test();
 // -----------------------------------------
 //const sb = require('./sandbox/sb20191005');
 //sb.test();

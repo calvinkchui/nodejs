@@ -18,7 +18,8 @@
     "cache-manager": "^2.10.1",
     "cheerio": "^1.0.0-rc.3",
     "jsonfile": "^5.0.0",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "@sanity/client": "^2.23.2"
   },
   "_dependencies": {}
 }
