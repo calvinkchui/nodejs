@@ -52,8 +52,8 @@ console.log("done");
 //const axios = require('./pkg/axios');
 //axios.test();
 
-const fs = require('./node/fs.js');
-fs.test();
+//const fs = require('./node/fs.js');
+//fs.test();
 
 //const jsonfile = require('./pkg/jsonfile');
 //jsonfile.test();
@@ -77,3 +77,5 @@ fs.test();
 
 //const sb = require('./sandbox/sb20191118');
 //sb.test();
+const sb = require('./sandbox/sb20220928');
+sb.test();

@@ -21,7 +21,7 @@ module.exports = {
     const logConfiguration = {
         'transports': [
             new winston.transports.File({
-                filename: './winston.log'
+                filename: './output/winston.log'
             })
         ]
     };
