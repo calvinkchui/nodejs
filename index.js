@@ -52,8 +52,8 @@ console.log("done");
 //const axios = require('./pkg/axios');
 //axios.test();
 
-//const fs = require('./pkg/fs');
-//fs.test();
+const fs = require('./node/fs.js');
+fs.test();
 
 //const jsonfile = require('./pkg/jsonfile');
 //jsonfile.test();
@@ -69,8 +69,8 @@ console.log("done");
 
 // Sanity
 // @sanity/client
-const sanityClient = require('./pkg/sanityClient');
-sanityClient.test();
+//const sanityClient = require('./pkg/sanityClient');
+//sanityClient.test();
 // -----------------------------------------
 //const sb = require('./sandbox/sb20191005');
 //sb.test();
