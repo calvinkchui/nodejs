@@ -1,4 +1,5 @@
 // Convert Json
+// Move code to app-assetmgnt-sanity
 
 function convertDt( value ) { // "2020-07-14 03:32:13"
     if (value !== null && value !== "")
