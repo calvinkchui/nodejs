@@ -1,6 +1,15 @@
+// Convert Json
 
+function convertDt( value ) { // "2020-07-14 03:32:13"
+    if (value !== null && value !== "")
+      return value.substring(0, 10) + "T" + value.substring(12) + "+08:00";
+
+    return null;
+}
 
 module.exports = {
+    
+
     test: function () {        
         var jsonata = require('jsonata');
         const fs = require('fs');
@@ -12,6 +21,8 @@ module.exports = {
         console.log("jsonfile.test() begin")
         const jsonfile = require('jsonfile');
          
+
+
         const data = jsonfile.readFileSync('./tmp/entries.json');
         var dataout = "";
         for( let i of data[2].data.filter( e => e.owner == '3' ) )
@@ -29,7 +40,7 @@ module.exports = {
  "owner_id":"4","users_permissions_user":null,"owner":"4"},            
 */ 
             var expression = jsonata(`{
-  "_id": \`id\`,
+  "_id": "inv_" & \`id\`,
   "name": \`name\`,
   "brand": \`brand\`,
   "model": \`model\`,
@@ -41,15 +52,35 @@ module.exports = {
   "imageUrl": \`image_link\`,
   "status": \`status\`,
   "purchaseDate": \`purchase_date\`,
-
-  "expiryDate": \`expiry_date\`
+  "expiryDate": \`expiry_date\`,
+  "_createdAt": \`created_at\`,
+  "_updatedAt": \`updated_at\`
 }`);     
             var result = expression.evaluate(i);       
+
+//{"_sanityAsset":"image@file://./assets/jpg-02.jpg","_type":"image"},
+
+            // status
+            result.type='A';
+            if ( result.status !== null ) {
+              if  (result.status == 'INUSE')
+                result.status = 'OP'
+              else if (result.status == 'USED')
+                result.status = 'MAINT'
+              else if (result.status == 'OBS')
+                result.status = 'DISPOSAL'             
+            }
+
+            // DT
+            result.purchaseDate = convertDt(result.purchaseDate);
+            result.expiryDate = convertDt(result.expiryDate);
+            result._createdAt = convertDt(result._createdAt);
+            result._updatedAt = convertDt(result._updatedAt);
             
             console.log(result);
 
             dataout += JSON.stringify(result,  
-              (key, value) => { if (value !== null && value !== "") return value }); ;
+              (key, value) => { if (value !== null && value !== "") return value }); // remove empty
 
             dataout += "\r\n" ;
 
